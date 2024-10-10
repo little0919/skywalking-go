@@ -52,13 +52,9 @@ func (format *WrapFormat) Format(entry *logrus.Entry) ([]byte, error) {
 			logContext = stringer
 		}
 		labels := make(map[string]string, len(keys))
-		for _, key := range keys {
 			for k, v := range entry.Data {
-				if k == key {
-					labels[key] = fmt.Sprintf("%v", v)
-				}
+        labels[k] = fmt.Sprintf("%v", v)
 			}
-		}
 		ReportLog(ctx, entry.Time, entry.Level.String(), entry.Message, labels)
 	}
 	// append trace context
