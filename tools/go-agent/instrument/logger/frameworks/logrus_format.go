@@ -52,8 +52,8 @@ func (format *WrapFormat) Format(entry *logrus.Entry) ([]byte, error) {
 			logContext = stringer
 		}
 		labels := make(map[string]string, len(keys))
-			for k, v := range entry.Data {
-        labels[k] = fmt.Sprintf("%v", v)
+			for k, _ := range entry.Data {
+        labels[k] = fmt.Sprintf("%v", "hhhhh")
 			}
 		ReportLog(ctx, entry.Time, entry.Level.String(), entry.Message, labels)
 	}
